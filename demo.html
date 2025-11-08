@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Popup Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f0f4ff;
+      color: #0f172a;
+    }
+
+    #akshara-modal {
+      position: fixed; inset: 0;
+      background: rgba(24, 32, 54, 0.75);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    #akshara-modal.show {
+      display: flex;
+    }
+
+    #akshara-modal .modal-content {
+      background: linear-gradient(135deg, #152550 0%, #223466 100%);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      color: #f8fafc;
+      max-width: 400px;
+      width: 90vw;
+      box-shadow: 0 16px 48px rgba(25,25,50,0.2), 0 1.5px 9px rgba(33,50,100,0.1);
+      position: relative;
+      text-align: center;
+    }
+
+    #akshara-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: #86a8cf;
+      font-size: 2.5rem;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      transition: color 0.3s ease;
+    }
+    #akshara-close:hover {
+      color: #fff;
+    }
+
+    a {
+      color: #f1f5fa;
+      text-decoration: underline;
+      display: block;
+      margin: 0.3rem 0;
+    }
+    a:hover {
+      color: #60a5fa;
+    }
+  </style>
+</head>
+<body>
+
+<div id="akshara-modal" role="dialog" aria-modal="true">
+  <div class="modal-content" tabindex="0">
+    <button id="akshara-close" aria-label="Close modal">&times;</button>
+    <h2>Akshara & OverTech Computer Institute</h2>
+    <p>
+      Main Road Amthana,<br />
+      Tq. Sillod, Dist. Chh. Sambhaji Nagar,<br />
+      Maharashtra - 431113
+    </p>
+    <a href="mailto:aksharacomputersofficial@gmail.com">aksharacomputersofficial@gmail.com</a>
+    <a href="tel:+919860540258">+91 9860540258</a>
+    <a href="tel:+919657459908">+91 9657459908</a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("akshara-modal");
+    const closeBtn = document.getElementById("akshara-close");
+
+    function showModal() {
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    // Show the modal once after 5 minutes (300000ms)
+    setTimeout(showModal, 300000);
+
+    closeBtn.addEventListener("click", closeModal);
+
+    // Close modal when clicking outside modal content
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  });
+</script>
+</body>
+</html>
