@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Empowering Students with Digital Skills | Government Certified Courses | Experienced Trainers"
+    />
+    <title>Akshara & OverTech Computer Institute</title>
+    <link rel="icon" href="assets/images/logo.png" />
+
+    <!-- Tailwind CSS -->
+    <link href="./assets/css/tailwind.min.css" rel="stylesheet" />
+
+    <!-- AOS Animation -->
+    <link href="./assets/css/aos.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --indigo-700: #2563eb;
+        --indigo-500: #4f46e5;
+        --cyan-400: #06b6d4;
+        --glass-bg: rgba(255, 255, 255, 0.6);
+        --glass-border: rgba(255, 255, 255, 0.45);
+      }
+
+      html,
+      body {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+      }
+
+      body {
+        background: linear-gradient(180deg, #f8fafc 0%, #f0f4ff 100%);
+        color: #0f172a;
+      }
+
+      /* Hero gradient & subtle motion like Flutter */
+      .hero-gradient {
+        background: linear-gradient(
+          90deg,
+          #092fc7 0%,
+          #bae6fd 50%,
+          #7dd3fc 100%
+        );
+        background-size: 200% 200%;
+        animation: heroShift 12s ease infinite;
+
+        /* Base (mobile) */
+        padding: 3rem 1.2rem;
+        text-align: center;
+      }
+
+      nav.navbar {
+        background-color: white !important;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+        transition: background 0.25s ease, box-shadow 0.25s ease;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 60;
+      }
+
+      nav.navbar.scrolled {
+        background: rgb(255, 255, 255);
+        box-shadow: 0 6px 30px rgba(2, 6, 23, 0.06);
+      }
+
+      /* Mobile Menu Panel */
+      #mobile-panel {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background-color: rgba(11, 15, 26, 0.95);
+        backdrop-filter: blur(6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      #mobile-panel.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      #mobile-panel aside {
+        width: 90vw;
+        max-width: 320px;
+        height: 100vh;
+        background: linear-gradient(to left, #1c2035, #0b0f1a);
+        box-shadow: -8px 0 20px rgba(0, 0, 0, 0.75);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        position: relative;
+      }
+
+      #mobile-panel.open aside {
+        transform: translateX(0);
+      }
+
+      #mobile-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: transparent;
+        border: none;
+        color: #cbd5e1;
+        font-size: 2.5rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      #mobile-panel {
+        position: fixed;
+        inset: 0;
+        background: rgba(11, 15, 26, 0.95);
+        backdrop-filter: blur(6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        display: flex;
+        justify-content: flex-end;
+        z-index: 999;
+      }
+
+      #mobile-panel.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      #mobile-panel aside {
+        width: 90vw;
+        max-width: 320px;
+        height: 100vh;
+        background: linear-gradient(to left, #1c2035, #0b0f1a);
+        box-shadow: -8px 0 20px rgba(0, 0, 0, 0.75);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        position: relative;
+      }
+
+      #mobile-panel.open aside {
+        transform: translateX(0);
+      }
+
+      #mobile-close:hover {
+        color: #60a5fa;
+      }
+
+      #mobile-panel nav {
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      #mobile-panel nav a,
+      #mobile-panel nav button {
+        color: #cbd5e1;
+        text-align: center;
+        border-radius: 9999px;
+        padding: 0.6rem 1.25rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      #mobile-panel nav a:hover,
+      #mobile-panel nav button:hover {
+        background-color: #3b82f6;
+        color: white;
+      }
+
+      #mobile-panel nav button {
+        background-color: #2563eb;
+        font-size: 1rem;
+      }
+
+      .ghost-button {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .image-slider {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .slider-track {
+        display: flex;
+        width: calc(200%);
+        /* doubled width because of duplicate images */
+        animation: scrollSlider 40s linear infinite;
+      }
+
+      .slider-img {
+        height: 80px;
+        /* base height */
+        width: auto;
+        margin-right: 2rem;
+        border-radius: 16px;
+        object-fit: cover;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.12));
+      }
+
+      .slider-img:hover {
+        transform: scale(1.15);
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+      }
+
+      /* Responsive height */
+      @media (min-width: 640px) {
+        .slider-img {
+          height: 90px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .slider-img {
+          height: 110px;
+        }
+      }
+
+      /* Keyframes for continuous scroll */
+      @keyframes scrollSlider {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (min-width: 640px) {
+        /* sm: small tablets */
+        .hero-gradient {
+          padding: 4rem 2rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        /* md: tablets */
+        .hero-gradient {
+          padding: 5rem 3rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        /* lg: laptops/desktops */
+        .hero-gradient {
+          padding: 6rem 4rem;
+          text-align: left;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        /* xl: large screens */
+        .title {
+          font-size: 1.8rem;
+        }
+        .hero-gradient {
+          padding: 7rem 6rem;
+        }
+      }
+
+      /* Glass cards */
+      .glass {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.55),
+          rgba(255, 255, 255, 0.35)
+        );
+        border: 1px solid var(--glass-border);
+        backdrop-filter: blur(10px) saturate(1.05);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+      }
+
+      /* Buttons */
+      .btn-primary {
+        background-image: linear-gradient(
+          90deg,
+          var(--indigo-500),
+          var(--indigo-700)
+        );
+        color: white;
+        width: fit-content;
+        padding: 0.72rem 1.25rem;
+        border-radius: 9999px;
+        font-weight: 700;
+        box-shadow: 0 8px 30px rgba(79, 70, 229, 0.12);
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 50px rgba(37, 99, 235, 0.18);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0.6rem 1rem;
+        border-radius: 9999px;
+        font-weight: 600;
+      }
+
+      /* Navbar */
+      nav.navbar {
+        backdrop-filter: blur(8px) saturate(1.1);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.6),
+          rgba(255, 255, 255, 0.35)
+        );
+        border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+        transition: background 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      nav.navbar.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 6px 30px rgba(2, 6, 23, 0.06);
+      }
+
+      /* Section separators (waves/curves) */
+      .wave-top {
+        transform: rotate(180deg);
+      }
+
+      .divider-curve svg {
+        display: block;
+        width: 100%;
+        height: 80px;
+      }
+
+      /* Floating social */
+      .floating-social {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 60;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      /* Responsive tweaks */
+      @media (min-width: 768px) {
+        header .hero-content {
+          padding: 6rem 0;
+        }
+      }
+
+      /* Subtle icon animation */
+      .floaty {
+        animation: floaty 6s ease-in-out infinite;
+      }
+
+      @keyframes floaty {
+        0% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-6px);
+        }
+
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      /* Utility to make images cover nicely */
+      .cover-img {
+        object-fit: cover;
+      }
+
+      /* Accessibility focus */
+      a:focus,
+      button:focus,
+      input:focus,
+      textarea:focus {
+        outline: 3px solid rgba(99, 102, 241, 0.18);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+
+  <body class="antialiased text-slate-900">
+    <!-- Navbar -->
+    <nav
+      id="navbar"
+      class="navbar flex items-center justify-between px-6 md:px-28 py-4"
+    >
+      <a
+        href="index.html"
+        class="flex items-center gap-3"
+        aria-label="Akshara & OverTech Computer Institute Logo"
+      >
+        <img
+          src="assets/images/logo.png"
+          alt="Akshara Logo"
+          class="w-10 h-10 rounded-full"
+        />
+        <span class="title font-bold text-indigo-600 select-none"
+          >Akshara
+          <span class="text-indigo-900">& OverTech Computer</span></span
+        >
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden md:flex gap-12 text-lg font-semibold text-slate-700">
+        <li>
+          <a href="index.html" class="hover:text-indigo-600 transition">Home</a>
+        </li>
+        <li>
+          <a href="./html/courses.html" class="text-indigo-600 transition"
+            >Courses</a
+          >
+        </li>
+        <li>
+          <a href="./html/about.html" class="hover:text-indigo-600 transition"
+            >About</a
+          >
+        </li>
+        <li>
+          <a href="./html/contact.html" class="hover:text-indigo-600 transition"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <button
+            id="lang-toggle"
+            data-lang="en"
+            class="px-5 py-1 rounded-full bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition"
+            aria-label="Toggle language"
+          >
+            मराठी
+          </button>
+        </li>
+      </ul>
+
+      <a
+        href="./html/login.html"
+        class="hidden md:inline-block bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-7 py-2 shadow-lg transition font-semibold select-none"
+        >Login</a
+      >
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-panel"
+        class="md:hidden p-2 rounded bg-indigo-600 text-white hover:bg-indigo-700 transition"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu panel -->
+    <div
+      id="mobile-panel"
+      aria-label="Mobile Navigation Menu"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <aside>
+        <button id="mobile-close" aria-label="Close menu">&times;</button>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="./html/courses.html">Courses</a>
+          <a href="./html/about.html">About</a>
+          <a href="./html/contact.html">Contact</a>
+          <button
+            id="mobile-lang-toggle"
+            data-lang="en"
+            aria-label="Toggle language"
+          >
+            मराठी
+          </button>
+          <a href="./html/login.html" class="mt-auto">Login</a>
+        </nav>
+      </aside>
+    </div>
+
+    <header
+      class="relative hero-gradient text-white rounded-b-3xl overflow-hidden"
+    >
+      <div class="absolute inset-0 opacity-30 pointer-events-none">
+        <!-- subtle diagonal lines overlay -->
+        <svg
+          width="100%"
+          height="100%"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity="0.02" />
+              <stop offset="1" stop-color="#000000" stop-opacity="0.02" />
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#g1)" />
+        </svg>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div
+          class="grid md:grid-cols-2 items-center gap-8 hero-content py-16 md:py-28"
+        >
+          <div class="text-left space-y-6" data-aos="fade-right">
+            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+              Boost Your Digital Future at
+              <span class="text-cyan-100"
+                >Akshara & OverTech Computer Institute</span
+              >
+            </h1>
+            <p class="text-base md:text-lg max-w-xl opacity-95">
+              Government-certified courses built for real jobs. Get practical
+              skills, hands-on projects, and expert trainers you can trust.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 mt-4">
+              <a href="./" class="btn-primary inline-flex items-center gap-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+                View Courses
+              </a>
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center rounded-full bg-white/20 px-5 py-3 backdrop-blur-sm font-semibold hover:bg-white/30 transition"
+                >Request a Call</a
+              >
+            </div>
+
+            <div class="mt-6 flex items-center gap-4 text-sm">
+              <div class="glass px-3 py-2 rounded-lg flex items-center gap-3">
+                <img
+                  src="assets/images/icons/gov.svg"
+                  alt="Govt"
+                  class="w-7 h-7"
+                />
+                <div class="text-left">
+                  <div class="text-xs text-white/90 font-semibold">
+                    Govt. Certified
+                  </div>
+                  <div class="text-xs text-white/70">Recognized courses</div>
+                </div>
+              </div>
+              <div class="glass px-3 py-2 rounded-lg flex items-center gap-3">
+                <img
+                  src="assets/images/icons/trainer.svg"
+                  alt="Trainers"
+                  class="w-7 h-7"
+                />
+                <div class="text-left">
+                  <div class="text-xs text-white/90 font-semibold">
+                    Experienced Trainers
+                  </div>
+                  <div class="text-xs text-white/70">10+ years mentoring</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative" data-aos="zoom-in" data-aos-delay="200">
+            <div
+              class="glass p-4 rounded-2xl shadow-xl transform -translate-y-6 md:-translate-y-12"
+            >
+              <img
+                src="assets/images/hero-bg.jpg"
+                alt="Students"
+                class="w-full h-64 md:h-80 rounded-xl cover-img"
+              />
+            </div>
+            <div
+              class="absolute -bottom-8 left-6 md:left-12 w-64 glass p-4 shadow-lg rounded-2xl"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="flex items-center gap-3">
+                <img
+                  src="assets/images/students/s1.jpg"
+                  alt="student"
+                  class="w-12 h-12 rounded-full ring-4 ring-white"
+                />
+                <div>
+                  <div class="text-sm font-semibold text-slate-900">
+                    Pranav Joshi
+                  </div>
+                  <div class="text-xs text-slate-600">MSCIT — Placed in IT</div>
+                </div>
+              </div>
+              <p class="mt-3 text-xs text-slate-700 italic">
+                "Akshara gave me the confidence to master computers. Now I work
+                at a top IT company!"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- decorative wave -->
+
+      <section
+        class="image-slider bg-gradient-to-r from-cyan-100 via-blue-200 to-indigo-200 py-6 relative"
+      >
+        <div class="slider-track flex">
+          <!-- Original images -->
+          <img
+            src="assets/images/icons/mscit.jpg"
+            alt="MS-CIT"
+            class="slider-img"
+          />
+          <img
+            src="assets/images/icons/KLiC-Advanced-Excel-2023.jpg"
+            alt="Advanced-Excel"
+            class="slider-img"
+          />
+          <img
+            src="assets/images/icons/KLiC-AI-ML-2024.jpg"
+            alt="KLiC-AI-ML"
+            class="slider-img"
+          />
+          <img
+            src="assets/images/icons/typing.jpg"
+            alt="KLiC-AI-ML"
+            class="slider-img"
+          />
+          <img
+            src="assets/images/icons/KLiC-C-Programming-2023.jpg"
+            alt="C-Programming"
+            class="slider-img"
+          />
+          <img
+            src="assets/images/icons/photoshop.jpg"
+            alt="photoshop"
+            class="slider-img"
+          />
+          <img
+            src="assets/images/icons/KLiC-Data-Entry-and-Data-Management-2023.jpg"
+            alt="photoshop"
+            class="slider-img"
+          />
+          <img
+            src="assets/images/icons/KLiC-Content-Illustration-2023.jpg"
+            alt="photoshop"
+            class="slider-img"
+          />
+          <img
+            src="assets/images/icons/KLiC-Cyber-Security-2023.jpg"
+            alt="photoshop"
+            class="slider-img"
+          />
+          <img
+            src="assets/images/icons/KLiC-DTP-Adobe-2023.jpg"
+            alt="photoshop"
+            class="slider-img"
+          />
+        </div>
+      </section>
+    </header>
+
+    <!-- WHY US -->
+    <section id="why" class="max-w-7xl mx-auto px-6 md:px-12 py-20 -mt-6">
+      <div
+        class="text-center mb-14 max-w-3xl mx-auto"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
+        <h2
+          class="text-4xl font-extrabold text-indigo-900 leading-tight tracking-tight mb-4"
+        >
+          Why Choose <span class="text-cyan-600">US</span>?
+        </h2>
+        <p class="text-indigo-700 text-lg leading-relaxed">
+          Join thousands of learners who trust us for practical learning, a
+          job-focused curriculum, and expert trainers dedicated to launching
+          successful careers.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto">
+        <div
+          class="glass p-8 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
+          data-aos="zoom-in"
+          data-aos-duration="1200"
+        >
+          <img
+            src="assets/images/icons/gov.svg"
+            alt="Government Certified Courses"
+            class="w-16 h-16 mb-5"
+          />
+          <h3 class="font-semibold text-cyan-600 text-xl mb-2">
+            Government Certified
+          </h3>
+          <p class="text-indigo-700 text-sm">
+            All our courses are officially recognized, opening doors to
+            government and private sector jobs.
+          </p>
+        </div>
+        <div
+          class="glass p-8 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
+          data-aos="zoom-in"
+          data-aos-duration="1200"
+          data-aos-delay="150"
+        >
+          <img
+            src="assets/images/icons/trainer.svg"
+            alt="Experienced Trainers"
+            class="w-16 h-16 mb-5"
+          />
+          <h3 class="font-semibold text-cyan-600 text-xl mb-2">
+            Experienced Trainers
+          </h3>
+          <p class="text-indigo-700 text-sm">
+            Our trainers bring over a decade of industry and teaching experience
+            to guide you every step of the way.
+          </p>
+        </div>
+        <div
+          class="glass p-8 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
+          data-aos="zoom-in"
+          data-aos-duration="1200"
+          data-aos-delay="300"
+        >
+          <img
+            src="assets/images/icons/fee.svg"
+            alt="Affordable Fees"
+            class="w-16 h-16 mb-5"
+          />
+          <h3 class="font-semibold text-cyan-600 text-xl mb-2">
+            Affordable Fees
+          </h3>
+          <p class="text-indigo-700 text-sm">
+            Education that fits your budget with easy payment plans and
+            scholarship opportunities.
+          </p>
+        </div>
+        <div
+          class="glass p-8 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
+          data-aos="zoom-in"
+          data-aos-duration="1200"
+          data-aos-delay="450"
+        >
+          <img
+            src="assets/images/icons/learning.svg"
+            alt="Practical Learning"
+            class="w-16 h-16 mb-5"
+          />
+          <h3 class="font-semibold text-cyan-600 text-xl mb-2">
+            Practical Learning
+          </h3>
+          <p class="text-indigo-700 text-sm">
+            Hands-on projects, real-world case studies, and dedicated job
+            placement support services.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section
+      id="courses"
+      class="max-w-7xl mx-auto px-6 md:px-12 py-20 bg-white/80 rounded-2xl shadow-lg"
+    >
+      <div class="text-center mb-14" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">
+          Popular Courses
+        </h2>
+        <p class="text-slate-600 mt-2 md:max-w-2xl mx-auto">
+          Career-ready short courses designed for quick job outcomes.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Course Card 1 -->
+        <div
+          class="glass flex flex-col h-full rounded-2xl shadow transition hover:scale-[1.02]"
+          data-aos="fade-up"
+        >
+          <img
+            src="assets/images/icons/KLiC-Advanced-Excel-2023.jpg"
+            alt="AutoCAD"
+            class="h-44 w-full object-cover rounded-t-2xl"
+          />
+          <div class="flex-1 flex flex-col p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">AutoCAD</h3>
+            <div class="flex gap-2 mb-2 flex-wrap">
+              <span
+                class="bg-blue-100 text-blue-700 font-medium text-xs px-3 py-1 rounded-full"
+                >Intermediate</span
+              >
+              <span
+                class="bg-green-100 text-green-700 font-medium text-xs px-3 py-1 rounded-full inline-flex items-center"
+              >
+                <svg
+                  class="w-4 h-4 mr-1"
+                  fill="none"
+                  stroke="#22c55e"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 8v4l3 3" /></svg
+                >120 hours
+              </span>
+            </div>
+            <p class="text-slate-600 mb-5 text-sm">
+              This course is designed for learners with Architectural or
+              Engineering backgrounds needing AutoCAD skills.
+            </p>
+            <a
+              href="#contact"
+              class="btn-glow w-full text-center py-2 mt-auto rounded-full font-bold transition"
+              >Book a Demo</a
+            >
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div
+          class="glass flex flex-col h-full rounded-2xl shadow transition hover:scale-[1.02]"
+          data-aos="fade-up"
+          data-aos-delay="60"
+        >
+          <img
+            src="assets/images/icons/KLiC-AI-ML-2024.jpg"
+            alt="BFSI"
+            class="h-44 w-full object-cover rounded-t-2xl"
+          />
+          <div class="flex-1 flex flex-col p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">BFSI</h3>
+            <div class="flex gap-2 mb-2 flex-wrap">
+              <span
+                class="bg-blue-100 text-blue-700 font-medium text-xs px-3 py-1 rounded-full"
+                >Intermediate</span
+              >
+              <span
+                class="bg-green-100 text-green-700 font-medium text-xs px-3 py-1 rounded-full inline-flex items-center"
+              >
+                <svg
+                  class="w-4 h-4 mr-1"
+                  fill="none"
+                  stroke="#22c55e"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 8v4l3 3" /></svg
+                >120 hours
+              </span>
+            </div>
+            <p class="text-slate-600 mb-5 text-sm">
+              The Indian banking system consists of 12 public sector
+              banks—covering all industry basics and finance tools.
+            </p>
+            <a
+              href="#contact"
+              class="btn-glow w-full text-center py-2 mt-auto rounded-full font-bold transition"
+              >Book a Demo</a
+            >
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div
+          class="glass flex flex-col h-full rounded-2xl shadow transition hover:scale-[1.02]"
+          data-aos="fade-up"
+          data-aos-delay="120"
+        >
+          <img
+            src="assets/images/icons/KLiC-C-Programming-2023.jpg"
+            alt="C Programming"
+            class="h-44 w-full object-cover rounded-t-2xl"
+          />
+          <div class="flex-1 flex flex-col p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">C Programming</h3>
+            <div class="flex gap-2 mb-2 flex-wrap">
+              <span
+                class="bg-purple-100 text-purple-700 font-medium text-xs px-3 py-1 rounded-full"
+                >Foundation</span
+              >
+              <span
+                class="bg-green-100 text-green-700 font-medium text-xs px-3 py-1 rounded-full inline-flex items-center"
+              >
+                <svg
+                  class="w-4 h-4 mr-1"
+                  fill="none"
+                  stroke="#22c55e"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 8v4l3 3" /></svg
+                >120 hours
+              </span>
+            </div>
+            <p class="text-slate-600 mb-5 text-sm">
+              C is one of the most widely used and user-friendly programming
+              languages for careers in tech fields.
+            </p>
+            <a
+              href="#contact"
+              class="btn-glow w-full text-center py-2 mt-auto rounded-full font-bold transition"
+              >Book a Demo</a
+            >
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div
+          class="glass flex flex-col h-full rounded-2xl shadow transition hover:scale-[1.02]"
+          data-aos="fade-up"
+          data-aos-delay="180"
+        >
+          <img
+            src="assets/images/icons/KLiC-Content-Illustration-2023.jpg"
+            alt="C++ Programming"
+            class="h-44 w-full object-cover rounded-t-2xl"
+          />
+          <div class="flex-1 flex flex-col p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">
+              C++ Programming
+            </h3>
+            <div class="flex gap-2 mb-2 flex-wrap">
+              <span
+                class="bg-purple-100 text-purple-700 font-medium text-xs px-3 py-1 rounded-full"
+                >Foundation</span
+              >
+              <span
+                class="bg-green-100 text-green-700 font-medium text-xs px-3 py-1 rounded-full inline-flex items-center"
+              >
+                <svg
+                  class="w-4 h-4 mr-1"
+                  fill="none"
+                  stroke="#22c55e"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 8v4l3 3" /></svg
+                >120 hours
+              </span>
+            </div>
+            <p class="text-slate-600 mb-5 text-sm">
+              C++ is a general-purpose object-oriented language for complex apps
+              and foundational CS skills.
+            </p>
+            <a
+              href="#contact"
+              class="btn-glow w-full text-center py-2 mt-auto rounded-full font-bold transition"
+              >Book a Demo</a
+            >
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div
+          class="glass flex flex-col h-full rounded-2xl shadow transition hover:scale-[1.02]"
+          data-aos="fade-up"
+          data-aos-delay="240"
+        >
+          <img
+            src="assets/images/icons/KLiC-Cyber-Security-2023.jpg"
+            alt="C & C++ Programming"
+            class="h-44 w-full object-cover rounded-t-2xl"
+          />
+          <div class="flex-1 flex flex-col p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">
+              C & C++ Programming
+            </h3>
+            <div class="flex gap-2 mb-2 flex-wrap">
+              <span
+                class="bg-purple-100 text-purple-700 font-medium text-xs px-3 py-1 rounded-full"
+                >Foundation</span
+              >
+              <span
+                class="bg-green-100 text-green-700 font-medium text-xs px-3 py-1 rounded-full inline-flex items-center"
+              >
+                <svg
+                  class="w-4 h-4 mr-1"
+                  fill="none"
+                  stroke="#22c55e"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 8v4l3 3" /></svg
+                >120 hours
+              </span>
+            </div>
+            <p class="text-slate-600 mb-5 text-sm">
+              C is a widely used and user friendly programming language; C++
+              offers advanced structure and efficiency.
+            </p>
+            <a
+              href="#contact"
+              class="btn-glow w-full text-center py-2 mt-auto rounded-full font-bold transition"
+              >Book a Demo</a
+            >
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div
+          class="glass flex flex-col h-full rounded-2xl shadow transition hover:scale-[1.02]"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <img
+            src="assets/images/icons/KLiC-DTP-Adobe-2023.jpg"
+            alt="Content Illustration"
+            class="h-44 w-full object-cover rounded-t-2xl"
+          />
+          <div class="flex-1 flex flex-col p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">
+              Content Illustration
+            </h3>
+            <div class="flex gap-2 mb-2 flex-wrap">
+              <span
+                class="bg-blue-100 text-blue-700 font-medium text-xs px-3 py-1 rounded-full"
+                >Intermediate</span
+              >
+              <span
+                class="bg-green-100 text-green-700 font-medium text-xs px-3 py-1 rounded-full inline-flex items-center"
+              >
+                <svg
+                  class="w-4 h-4 mr-1"
+                  fill="none"
+                  stroke="#22c55e"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 8v4l3 3" /></svg
+                >120 hours
+              </span>
+            </div>
+            <p class="text-slate-600 mb-5 text-sm">
+              Every brand needs content and it is always high on demand in the
+              design industry.
+            </p>
+            <a
+              href="#contact"
+              class="btn-glow w-full text-center py-2 mt-auto rounded-full font-bold transition"
+              >Book a Demo</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section
+      id="about"
+      class="relative max-w-7xl mx-auto px-6 md:px-12 py-20 grid md:grid-cols-2 gap-14 items-center bg-gradient-to-br from-sky-50 via-white to-indigo-50 rounded-2xl shadow-[0_2px_24px_rgba(60,110,240,0.05)] overflow-hidden"
+    >
+      <!-- Curve/Accent Left (decor) -->
+      <div
+        class="absolute left-[-80px] top-[-80px] w-80 h-80 bg-indigo-100/40 rounded-full blur-2xl -z-1"
+      ></div>
+
+      <img
+        src="assets/images/institute.jpg"
+        alt="Institute Building"
+        class="rounded-2xl shadow-lg w-full h-72 object-cover border-4 border-white"
+        data-aos="fade-right"
+      />
+
+      <div data-aos="fade-left" class="z-10">
+        <span
+          class="inline-block px-5 py-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 text-white text-sm font-semibold shadow mb-3"
+          >Since 2012</span
+        >
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+          About Akshara Institute
+        </h2>
+        <p class="text-slate-700 leading-relaxed mb-6 text-lg">
+          For over a decade, Akshara & OverTech have helped 1000+ students gain
+          <span class="text-indigo-700 font-semibold"
+            >government-certified, real-world IT skills</span
+          >. Our expert trainers use 1:1 mentoring, practical labs, and modern
+          technology to launch careers with confidence.
+        </p>
+        <div class="flex gap-8 mt-6 text-center">
+          <div>
+            <div class="md:text-5xl text-4xl font-extrabold text-indigo-700">
+              1000+
+            </div>
+            <div class="text-sm text-slate-500 mt-1">Students</div>
+          </div>
+          <div>
+            <div class="md:text-5xl text-4xl font-extrabold text-indigo-700">
+              10+
+            </div>
+            <div class="text-sm text-slate-500 mt-1">Years Experience</div>
+          </div>
+          <div>
+            <div class="md:text-5xl text-4xl font-extrabold text-indigo-700">
+              99.9%
+            </div>
+            <div class="text-sm text-slate-500 mt-1">Success Rate</div>
+          </div>
+        </div>
+        <div class="mt-8">
+          <a
+            href="#contact"
+            class="btn-glow px-8 py-3 w-full md:w-auto rounded-full text-indigo-700 text-lg font-bold shadow-md hover:-translate-y-0.5 transition"
+            style="box-shadow: 0.5rem 0.5rem 1rem rgba(110, 118, 236, 0.728)"
+            >Get Started Today</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section
+      id="testimonials"
+      class="max-w-7xl mx-auto px-6 md:px-12 py-20 relative"
+    >
+      <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-down">
+        <h2 class="text-4xl font-extrabold text-indigo-900">
+          What Our Students Say
+        </h2>
+        <p class="text-indigo-700 mt-3">
+          Hear directly from our students about how Akshara changed their
+          career.
+        </p>
+      </div>
+
+      <!-- Slider Container -->
+      <div class="relative overflow-hidden">
+        <div
+          id="testimonial-slider"
+          class="flex gap-8 transition-transform duration-700 ease-in-out"
+        >
+          <!-- Each testimonial card -->
+          <article
+            class="glass p-10 rounded-xl shadow-lg flex flex-col items-center justify-between min-w-full md:min-w-[33.333%]"
+          >
+            <img
+              src="assets/images/students/s1.jpg"
+              alt="Pranav Joshi"
+              class="w-20 h-20 rounded-full mb-6 ring-4 ring-indigo-200 shadow"
+            />
+            <p class="italic text-indigo-800 mb-6 text-center">
+              "Akshara gave me the confidence to master computers and land my
+              first IT job."
+            </p>
+            <footer class="font-semibold text-indigo-900 text-center">
+              Pranav Joshi<br /><span class="font-normal text-indigo-600"
+                >MSCIT</span
+              >
+            </footer>
+          </article>
+
+          <article
+            class="glass p-10 rounded-xl shadow-lg flex flex-col items-center justify-between min-w-full md:min-w-[33.333%]"
+          >
+            <img
+              src="assets/images/students/s1.jpg"
+              alt="Meenal Patil"
+              class="w-20 h-20 rounded-full mb-6 ring-4 ring-pink-300 shadow"
+            />
+            <p class="italic text-indigo-800 mb-6 text-center">
+              "Thanks to the clear Tally training, I am now confidently doing
+              account handling for a major firm."
+            </p>
+            <footer class="font-semibold text-indigo-900 text-center">
+              Meenal Patil<br /><span class="font-normal text-indigo-600"
+                >Tally ERP 9</span
+              >
+            </footer>
+          </article>
+
+          <article
+            class="glass p-10 rounded-xl shadow-lg flex flex-col items-center justify-between min-w-full md:min-w-[33.333%]"
+          >
+            <img
+              src="assets/images/students/s1.jpg"
+              alt="Vicky Deshmukh"
+              class="w-20 h-20 rounded-full mb-6 ring-4 ring-indigo-400 shadow"
+            />
+            <p class="italic text-indigo-800 mb-6 text-center">
+              "The web development course helped me build and launch 3 portfolio
+              sites in 6 months."
+            </p>
+            <footer class="font-semibold text-indigo-900 text-center">
+              Vicky Deshmukh<br /><span class="font-normal text-indigo-600"
+                >Web Development</span
+              >
+            </footer>
+          </article>
+        </div>
+
+        <!-- Controls (optional) -->
+        <button
+          id="prevBtn"
+          aria-label="Previous testimonial"
+          class="absolute top-1/2 -left-6 -translate-y-1/2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full w-10 h-10 flex items-center justify-center shadow focus:outline-none"
+        >
+          <svg
+            class="w-5 h-5 rotate-180"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+        <button
+          id="nextBtn"
+          aria-label="Next testimonial"
+          class="absolute top-1/2 -right-6 -translate-y-1/2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full w-10 h-10 flex items-center justify-center shadow focus:outline-none"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- TRAINERS -->
+    <section id="instructors" class="max-w-7xl mx-auto px-6 md:px-12 py-20">
+      <h2
+        class="text-4xl font-extrabold mb-12 text-center text-indigo-900"
+        data-aos="fade-down"
+      >
+        Meet Our Trainers
+      </h2>
+      <div
+        class="grid sm:grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-14 max-w-6xl mx-auto"
+      >
+        <!-- Single Trainer Card -->
+        <div
+          class="glass flex flex-col items-center p-8 rounded-2xl hover:scale-[1.04] transition-transform shadow-lg"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <img
+            src="assets/images/students/s1.jpg"
+            alt="Mrs. Tejaswini Kulkarni"
+            class="w-28 h-28 rounded-full border-4 border-indigo-300 shadow-md mb-5"
+          />
+          <h3 class="text-xl font-semibold text-indigo-700 mb-1 text-center">
+            Mrs. Tejaswini Kulkarni
+          </h3>
+          <div
+            class="bg-indigo-100 rounded-full text-indigo-600 px-4 py-1 text-sm font-semibold mb-2 select-none"
+          >
+            MSCIT, Tally Trainer
+          </div>
+          <p class="text-indigo-500 text-sm text-center select-none">
+            12+ Years of Experience
+          </p>
+        </div>
+
+        <div
+          class="glass flex flex-col items-center p-8 rounded-2xl hover:scale-[1.04] transition-transform shadow-lg"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <img
+            src="assets/images/students/s1.jpg"
+            alt="Mr. Rajiv Shinde"
+            class="w-28 h-28 rounded-full border-4 border-indigo-300 shadow-md mb-5"
+          />
+          <h3 class="text-xl font-semibold text-indigo-700 mb-1 text-center">
+            Mr. Rajiv Shinde
+          </h3>
+          <div
+            class="bg-indigo-100 rounded-full text-indigo-600 px-4 py-1 text-sm font-semibold mb-2 select-none"
+          >
+            Typing, GCC-TBC Expert
+          </div>
+          <p class="text-indigo-500 text-sm text-center select-none">
+            8+ Years of Training
+          </p>
+        </div>
+
+        <div
+          class="glass flex flex-col items-center p-8 rounded-2xl hover:scale-[1.04] transition-transform shadow-lg"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <img
+            src="assets/images/students/s1.jpg"
+            alt="Mrs. Smita Jadhav"
+            class="w-28 h-28 rounded-full border-4 border-indigo-300 shadow-md mb-5"
+          />
+          <h3 class="text-xl font-semibold text-indigo-700 mb-1 text-center">
+            Mrs. Smita Jadhav
+          </h3>
+          <div
+            class="bg-indigo-100 rounded-full text-indigo-600 px-4 py-1 text-sm font-semibold mb-2 select-none"
+          >
+            Web & Programming
+          </div>
+          <p class="text-indigo-500 text-sm text-center select-none">
+            10+ Years Industry Experience
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-xl mx-auto px-6 md:px-12 py-20">
+      <h2 class="text-3xl font-extrabold text-center mb-6" data-aos="fade-up">
+        Request a Call
+      </h2>
+      <form
+        id="contact-form"
+        class="glass p-6 bg-white/60 rounded-2xl shadow-md"
+        autocomplete="off"
+        data-aos="fade-up"
+        data-aos-delay="80"
+      >
+        <label class="sr-only" for="name">Your name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Your name"
+          required
+          minlength="3"
+          class="w-full rounded-md px-4 py-3 border border-gray-200 focus:ring-2 focus:ring-indigo-300"
+        />
+
+        <label class="sr-only" for="phone">Phone number</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          placeholder="Phone Number"
+          required
+          pattern="[\d\s\-\+]+"
+          class="w-full rounded-md px-4 py-3 border border-gray-200 mt-4 focus:ring-2 focus:ring-indigo-300"
+        />
+
+        <label class="sr-only" for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          placeholder="Message"
+          required
+          class="w-full rounded-md px-4 py-3 border border-gray-200 mt-4 focus:ring-2 focus:ring-indigo-300 resize-none"
+        ></textarea>
+
+        <button type="submit" class="btn-primary w-full mt-4">
+          Send Request
+        </button>
+        <p
+          id="contact-result"
+          class="text-center text-green-600 font-semibold mt-3"
+        ></p>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      class="mt-16 border-t border-slate-100 py-12 bg-indigo-50 text-slate-700"
+    >
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div
+          class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-0"
+        >
+          <div class="space-y-2">
+            <div class="font-semibold text-indigo-900 text-lg">
+              Akshara & OverTech Computer Institute
+            </div>
+            <address class="not-italic text-slate-600 text-sm leading-relaxed">
+              Main Road Amthana, Tq. Sillod, Dist. Chh. Sambhaji Nagar,
+              Maharashtra - 431113
+            </address>
+            <div class="text-sm space-y-1">
+              <a
+                href="mailto:aksharacomputersofficial@gmail.com"
+                class="block hover:text-indigo-700 underline transition"
+                >aksharacomputersofficial@gmail.com</a
+              >
+              <a
+                href="tel:+919860540258"
+                class="block hover:text-indigo-700 underline transition"
+                >+91 9860540258</a
+              >
+              <a
+                href="tel:+919657459908"
+                class="block hover:text-indigo-700 underline transition"
+                >+91 9657459908</a
+              >
+            </div>
+          </div>
+
+          <nav
+            class="flex flex-wrap gap-8 justify-between md:justify-end text-indigo-700 font-semibold text-sm max-w-md md:max-w-none"
+          >
+            <a href="#about" class="hover:text-indigo-900 transition">About</a>
+            <a href="#courses" class="hover:text-indigo-900 transition"
+              >Courses</a
+            >
+            <a href="#contact" class="hover:text-indigo-900 transition"
+              >Contact</a
+            >
+            <a
+              href="https://goo.gl/maps/yourlink"
+              target="_blank"
+              class="hover:text-indigo-900 transition"
+              >Location Map</a
+            >
+            <a
+              href="privacy-policy.html"
+              class="hover:text-indigo-900 transition"
+              >Privacy Policy</a
+            >
+            <a
+              href="terms-of-service.html"
+              class="hover:text-indigo-900 transition"
+              >Terms of Service</a
+            >
+          </nav>
+        </div>
+
+        <p class="mt-8 text-center text-slate-500 text-xs">
+          © 2025 Akshara & OverTech Computer Institute. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!--Floating Social Icons -->
+    <div
+      class="fixed right-6 bottom-8 z-50 flex flex-col gap-5 bg-white/20 backdrop-blur-lg p-3 rounded-3xl shadow-lg"
+    >
+      <a
+        href="https://wa.me/9860540258"
+        target="_blank"
+        title="WhatsApp"
+        aria-label="WhatsApp"
+        class="w-12 h-12 flex items-center justify-center rounded-full hover:scale-110 transition-transform duration-200"
+        style="
+          box-shadow: 0 6px 15px rgba(92, 176, 186, 0.6);
+          background: rgba(255, 255, 255, 0.65);
+        "
+      >
+        <img
+          src="assets/images/icons/whatsapp-fill.svg"
+          alt="WhatsApp Icon"
+          class="w-6 h-6"
+        />
+      </a>
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        title="Instagram"
+        aria-label="Instagram"
+        class="w-12 h-12 flex items-center justify-center rounded-full hover:scale-110 transition-transform duration-200"
+        style="
+          box-shadow: 0 6px 15px rgba(131, 58, 180, 0.6);
+          background: rgba(255, 255, 255, 0.65);
+        "
+      >
+        <img
+          src="assets/images/icons/instagram-fill.svg"
+          alt="Instagram Icon"
+          class="w-6 h-6"
+        />
+      </a>
+      <a
+        href="https://facebook.com"
+        target="_blank"
+        title="Facebook"
+        aria-label="Facebook"
+        class="w-12 h-12 flex items-center justify-center rounded-full hover:scale-110 transition-transform duration-200"
+        style="
+          box-shadow: 0 6px 15px rgba(59, 89, 152, 0.6);
+          background: rgba(255, 255, 255, 0.65);
+        "
+      >
+        <img
+          src="assets/images/icons/facebook-circle-fill.svg"
+          alt="Facebook Icon"
+          class="w-6 h-6"
+        />
+      </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const navbar = document.getElementById("navbar");
+        const mobileToggle = document.getElementById("mobile-toggle");
+        const mobilePanel = document.getElementById("mobile-panel");
+        const mobileClose = document.getElementById("mobile-close");
+        const mobileLangToggle = document.getElementById("mobile-lang-toggle");
+        const desktopLangToggle = document.getElementById("lang-toggle");
+
+        // Navbar shadow on scroll
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 40) {
+            navbar.classList.add("shadow-lg");
+          } else {
+            navbar.classList.remove("shadow-lg");
+          }
+        });
+
+        // Function to open mobile menu
+        function openMobileMenu() {
+          mobilePanel.classList.add("open");
+          mobilePanel.setAttribute("aria-hidden", "false");
+          mobileToggle.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+
+        // Function to close mobile menu
+        function closeMobileMenu() {
+          mobilePanel.classList.remove("open");
+          mobilePanel.setAttribute("aria-hidden", "true");
+          mobileToggle.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+
+        // Toggle mobile menu open/close
+        mobileToggle.addEventListener("click", () => {
+          if (mobilePanel.classList.contains("open")) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
+        });
+
+        // Close mobile menu via close button
+        mobileClose.addEventListener("click", closeMobileMenu);
+
+        // Close mobile menu when clicking outside of aside (backdrop)
+        mobilePanel.addEventListener("click", (e) => {
+          if (e.target === mobilePanel) {
+            closeMobileMenu();
+          }
+        });
+
+        // Close mobile menu and smooth scroll on navigation link click in mobile menu
+        mobilePanel.querySelectorAll("nav a").forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const href = link.getAttribute("href");
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+            closeMobileMenu();
+          });
+        });
+
+        // Language toggle alert placeholder
+        function langToggleHandler() {
+          alert(
+            "Language toggle clicked — implement translations in assets/js/lang.js"
+          );
+        }
+        desktopLangToggle?.addEventListener("click", langToggleHandler);
+        mobileLangToggle?.addEventListener("click", langToggleHandler);
+
+        // Initialize AOS animations
+        if (window.AOS) {
+          AOS.init({ duration: 900, once: true, easing: "ease-out-cubic" });
+        }
+      });
+
+      // Simple auto slider for testimonials
+      document.addEventListener("DOMContentLoaded", () => {
+        const slider = document.getElementById("testimonial-slider");
+        const total = slider.children.length;
+        let index = 0;
+
+        const next = () => {
+          index++;
+          if (index > total - 1) index = 0;
+          slider.style.transform = `translateX(-${index * 100}%)`;
+        };
+        const prev = () => {
+          index--;
+          if (index < 0) index = total - 1;
+          slider.style.transform = `translateX(-${index * 100}%)`;
+        };
+
+        let interval = setInterval(next, 6000);
+
+        document.getElementById("nextBtn").addEventListener("click", () => {
+          next();
+          clearInterval(interval);
+          interval = setInterval(next, 6000);
+        });
+        document.getElementById("prevBtn").addEventListener("click", () => {
+          prev();
+          clearInterval(interval);
+          interval = setInterval(next, 6000);
+        });
+      });
+    </script>
+  </body>
+</html>
