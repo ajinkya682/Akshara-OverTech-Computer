@@ -1,445 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Empowering Students with Digital Skills | Government Certified Courses | Experienced Trainers"
-    />
-    <title>Akshara & OverTech Computer Institute</title>
-    <link rel="icon" href="../../assets/images/logo.png" />
-    <!-- AOS Animation CSS -->
-    <link href="../../../assets/css/aos.css" rel="stylesheet" />
-    <!-- Tailwind CSS -->
-    <link href="../../../assets/css/tailwind.min.css" rel="stylesheet" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Empowering Students with Digital Skills | Government Certified Courses | Experienced Trainers" />
+  <title>Akshara & OverTech Computer Institute</title>
 
-    <style>
-      /* Reset and base */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
+  <link rel="icon" href="../assets/images/logo.png" />
+  <!-- AOS Animation CSS -->
+  <link href="../assets/css/aos.css" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <link href="../assets/css/tailwind.min.css" rel="stylesheet" />
 
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
-          "Helvetica Neue", Arial, sans-serif;
-        background: linear-gradient(180deg, #f8fafc 0%, #f0f4ff 100%);
-        color: #0f172a;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-      }
+  <style>
+    /* Reset and base */
+    *, *::before, *::after { box-sizing: border-box; }
+    body, html {
+      margin: 0; padding: 0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #f0f4ff 100%);
+      color: #0f172a;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover, a:focus {color: #2563eb; outline:none;}
+    button { font-family: inherit; font-size:1rem; cursor:pointer; border:none; background:none; outline:none; }
+    
+    /* Navbar */
+    nav.navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: white;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+      padding: 1rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+      z-index: 60;
+    }
+    nav.navbar.scrolled {
+      box-shadow: 0 6px 30px rgba(2, 6, 23, 0.06);
+    }
+    .navbar-logo { display: flex; align-items: center; gap: 0.75rem; user-select: none; }
+    .navbar-logo img { width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+    .navbar-logo span { font-weight: 700; font-size: 1.95rem; color: #2563eb; }
+    .navbar-logo span .secondary { color: #312e81; }
+    ul.nav-links {
+      list-style: none;
+      display: flex;
+      gap: 3rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: #475569;
+      margin: 0; padding: 0;
+    }
+    ul.nav-links li a.text-primary { color: #2563eb; }
+    ul.nav-links li button.lang-toggle {
+      padding: 0.25rem 1.25rem;
+      border-radius: 9999px;
+      background-color: #ebf2ff;
+      color: #2563eb;
+      transition: background-color 0.2s;
+      font-weight: 700;
+    }
+    ul.nav-links li button.lang-toggle:hover { background-color: #d3e0ff; }
+    a.login-btn {
+      display: inline-block;
+      background-color: #2563eb;
+      color: white;
+      padding: 0.5rem 2rem;
+      font-family: sans-serif;
+      font-size: 1rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.5);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    a.login-btn:hover { background-color: #1d4ed8; }
+    button#mobile-toggle {
+      background-color: #2563eb;
+      color: white;
+      border-radius: 0.375rem;
+      padding: 0.5rem;
+      border: none;
+      display: none;
+      transition: background-color 0.3s ease;
+    }
+    button#mobile-toggle:hover { background-color: #1d4ed8; }
+    button#mobile-toggle svg {
+      width: 24px; height: 24px;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      stroke: currentColor; fill: none;
+    }
+    @media (max-width: 1200px) {
+      nav.navbar { padding: 1rem 1.5rem; }
+      .navbar-logo span { font-size: 1.5rem; }
+    }
+    @media (max-width: 767px) {
+      ul.nav-links { display: none; }
+      nav.navbar { padding: 1rem 1.5rem; }
+      .navbar-logo span { font-size: 1.5rem; }
+      a.login-btn { display: none; }
+      button#mobile-toggle { display: block; }
+    }
+    #mobile-panel {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: rgba(11, 15, 26, 0.176);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      display: flex; justify-content: flex-end;
+      z-index: 999;
+    }
+    #mobile-panel.open { opacity: 1; pointer-events: auto; }
+    #mobile-panel aside {
+      width: 90vw; max-width: 350px; height: 100vh;
+      background: linear-gradient(to left, #1c2035, #0b0f1a);
+      box-shadow: -8px 0 20px rgba(0, 0, 0, 0.75);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      display: flex; align-items: center; flex-direction: column;
+      padding: 2rem 1.5rem; position: relative;
+    }
+    #mobile-panel.open aside { transform: translateX(0); }
+    #mobile-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: transparent; border: none; color: #cbd5e1;
+      font-size: 2.5rem; cursor: pointer; transition: color 0.3s ease;
+      user-select: none;
+    }
+    #mobile-close:hover { color: #3b82f6; }
+    #mobile-panel nav {
+      margin-top: 4rem; display: flex; flex-direction: column;
+      align-items: center; gap: 2rem; font-size: 1.5rem; font-weight: 600;
+      color: #000000;
+    }
+    #mobile-panel nav a, #mobile-panel nav button {
+      color: #cbd5e1; text-align: center; border-radius: 1rem;
+      padding: 1rem 1.5rem; width: fit-content; font-size: 2rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer; user-select: none; background: none; border: none; font: inherit;
+    }
+    #mobile-panel nav a:hover, #mobile-panel nav button:hover {
+      color: #3b82f6; border-bottom: 2px solid #3b82f6;
+    }
+    #mobile-panel nav button { font-size: 1.75rem; padding: 0.5rem 1.25rem; }
+    #mobile-panel nav a.login-link {
+      background-color: #2563eb; font-size: 1.75rem; padding: 0.5rem 1.25rem;
+    }
+    #mobile-panel nav a.login-link:hover {
+      background-color: #3b82f6; color: white;
+    }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+    /* Courses Section */
+    .glass {
+      backdrop-filter: blur(10px) saturate(1.05);
+      background: linear-gradient(120deg, #f3f4faee 75%, #e9e9f7bb);
+      border-radius: 1.2rem;
+      border: 1px solid #e5ebfa;
+    }
+    .btn-primary {
+      background-image: linear-gradient(90deg, #4f46e5 0, #2563eb 100%);
+      color: white;
+      padding: 0.65rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      box-shadow: 0 8px 30px #4f46e511;
+      transition: box-shadow 0.17s, background 0.17s;
+      font-size: 1.08rem;
+      margin-top: 0.8rem;
+      display: inline-block;
+      text-align: center;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 24px 60px #2563eb2c;
+      background-image: linear-gradient(90deg, #2563eb 0, #4f46e5 100%);
+      color: #e0e9ff;
+      transform: translateY(-2px) scale(1.03);
+    }
+    .like-btn {
+      border: 0; background: #fff; color: #eab308;
+      border-radius: 9999px; box-shadow: 0 1.5px 8px #fbbf24;
+      font-size: 1.3rem; padding: 4px 12px; cursor: pointer;
+      margin-left: 12px; transition: background 0.12s; vertical-align: middle;
+    }
+    .like-btn.liked, .like-btn.active, .like-btn:active {
+      color: orange;
+      background: #fffbe5;
+    }
+    #modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(53, 57, 82, 0.24);
+      align-items: center; justify-content: center;
+      backdrop-filter: blur(5px);
+    }
+    #modal-bg.active { display: flex; animation: fadeIn 0.3s; }
+    #course-modal {
+      min-width: 325px; max-width: 410px;
+      background: #fff;
+      border-radius: 1.3rem;
+      box-shadow: 0 16px 44px #4f46e540;
+      padding: 2.3rem 2rem;
+      position: relative;
+      opacity: 0;
+      transform: translateY(40px) scale(0.94);
+      animation: showCard 0.35s forwards;
+    }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    @keyframes showCard {
+      60% {opacity:1; transform:translateY(-8px) scale(1.01);}
+      100% {opacity:1; transform:translateY(0) scale(1);}
+    }
+    #course-modal .btn-close {
+      font-size: 1.6rem; background: none; border: none; color: #475569;
+      position: absolute; top: 12px; right: 24px; cursor: pointer; transition: color 0.17s; font-weight: bold;
+    }
+    #course-modal .btn-close:hover { color: #ef4444; }
+    .fade-in { animation: fadeIn 0.4s; }
+    .filter-btn {
+      transition: background 0.17s, color 0.17s, box-shadow 0.17s;
+      font-weight: 600; font-size: 1rem; padding: 0.42rem 1.12rem; border-radius: 9999px;
+      background: #e0eaff; margin: 3px 7px 7px 0;
+      color: #494ba0; border: none; cursor: pointer; box-shadow: 0 2px 12px #4f46e515;
+    }
+    .filter-btn.active {
+      background: linear-gradient(90deg, #2563eb 0%, #4f46e5 90%);
+      color: #fff; box-shadow: 0 7px 25px #2563eb26;
+    }
+  </style>
+</head>
 
-      a:hover {
-        color: #2563eb; /* indigo-600 */
-      }
-
-      button {
-        font-family: inherit;
-        font-size: 1rem;
-        cursor: pointer;
-        border: none;
-        background: none;
-      }
-
-      /* Navbar */
-      nav.navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: white;
-        border-bottom: 1px solid rgba(15, 23, 42, 0.04);
-        transition: background 0.25s ease, box-shadow 0.25s ease;
-        z-index: 60;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 6rem;
-      }
-
-      nav.navbar.scrolled {
-        box-shadow: 0 6px 30px rgba(2, 6, 23, 0.06);
-      }
-
-      /* Navbar logo */
-      .navbar-logo {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        user-select: none;
-      }
-
-      .navbar-logo img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: block;
-        cursor: pointer;
-      }
-
-      .navbar-logo span {
-        font-weight: 700;
-        font-size: 1.95rem;
-        color: #2563eb; /* indigo-600 */
-      }
-
-      .navbar-logo span .secondary {
-        color: #312e81; /* indigo-900 */
-      }
-
-      /* Desktop navigation */
-      ul.nav-links {
-        list-style: none;
-        display: flex;
-        gap: 3rem;
-        font-weight: 700;
-        font-size: 1.125rem;
-        color: #475569; /* slate-700 */
-        margin: 0;
-        padding: 0;
-      }
-
-      ul.nav-links li a.text-primary {
-        color: #2563eb; /* indigo-600 */
-      }
-
-      ul.nav-links li button.lang-toggle {
-        padding: 0.25rem 1.25rem;
-        border-radius: 9999px;
-        background-color: #ebf2ff; /* indigo-100 */
-        color: #2563eb; /* indigo-700 */
-        transition: background-color 0.2s;
-        font-weight: 700;
-      }
-
-      ul.nav-links li button.lang-toggle:hover {
-        background-color: #d3e0ff; /* indigo-200 */
-      }
-
-      /* Login button desktop */
-      a.login-btn {
-        display: inline-block;
-        background-color: #2563eb; /* indigo-600 */
-        color: white;
-        padding: 0.5rem 2rem;
-        font-family: sans-serif;
-        font-size: 1rem;
-        border-radius: 9999px;
-        font-weight: 700;
-        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.5);
-        transition: background-color 0.3s ease;
-        user-select: none;
-      }
-
-      a.login-btn:hover {
-        background-color: #1d4ed8; /* indigo-700 */
-      }
-
-      /* Mobile hamburger */
-      button#mobile-toggle {
-        background-color: #2563eb;
-        color: white;
-        border-radius: 0.375rem;
-        padding: 0.5rem;
-        border: none;
-        display: none; /* hidden by default, visible on small screens */
-        transition: background-color 0.3s ease;
-      }
-
-      button#mobile-toggle:hover {
-        background-color: #1d4ed8;
-      }
-
-      /* SVG lines in button */
-      button#mobile-toggle svg {
-        width: 24px;
-        height: 24px;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke: currentColor;
-        fill: none;
-      }
-
-      /* Responsive */
-
-      @media (max-width: 1200px) {
-        
-        
-        nav.navbar {
-        padding: 1rem 1.5rem;
-      }
-
-      .navbar-logo span{
-          font-size: 1.5rem;
-        }
-        
-      }
-      
-      @media (max-width: 767px) {
-        ul.nav-links {
-          display: none;
-        }
-
-        nav.navbar {
-          padding: 1rem 1.5rem;
-        }
-
-        .navbar-logo span{
-          font-size: 1.5rem;
-        }
-
-        a.login-btn {
-          display: none;
-        }
-
-        button#mobile-toggle {
-          display: block;
-        }
-      }
-
-      /* Mobile menu panel */
-      #mobile-panel {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(11, 15, 26, 0.176);
-        backdrop-filter: blur(6px);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        display: flex;
-        justify-content: flex-end;
-        z-index: 999;
-      }
-
-      #mobile-panel.open {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      #mobile-panel aside {
-        width: 90vw;
-        max-width: 350px;
-        height: 100vh;
-        background: linear-gradient(to left, #1c2035, #0b0f1a);
-        box-shadow: -8px 0 20px rgba(0, 0, 0, 0.75);
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        padding: 2rem 1.5rem;
-        position: relative;
-      }
-
-      #mobile-panel.open aside {
-        transform: translateX(0);
-      }
-
-      #mobile-close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: transparent;
-        border: none;
-        color: #cbd5e1;
-        font-size: 2.5rem;
-        cursor: pointer;
-        transition: color 0.3s ease;
-        user-select: none;
-      }
-
-      #mobile-close:hover {
-        color: #3b82f6;
-      }
-
-      #mobile-panel nav {
-        margin-top: 4rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #000000;
-      }
-
-      #mobile-panel nav a,
-      #mobile-panel nav button {
-        color: #cbd5e1;
-        text-align: center;
-        border-radius: 1rem;
-        padding: 1rem 1.5rem;
-        width: fit-content;
-        font-size: 2rem;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        cursor: pointer;
-        user-select: none;
-        background: none;
-        border: none;
-        font: inherit;
-      }
-
-      #mobile-panel nav a:hover,
-      #mobile-panel nav button:hover {
-        color: #3b82f6;
-        border-bottom: 2px solid #3b82f6;
-      }
-
-      #mobile-panel nav button {
-        font-size: 1.75rem;
-        padding: 0.5rem 1.25rem;
-      }
-
-      #mobile-panel nav a.login-link {
-        background-color: #2563eb;
-        font-size: 1.75rem;
-        padding: 0.5rem 1.25rem;
-      }
-
-      #mobile-panel nav a.login-link:hover {
-        background-color: #3b82f6;
-        color: white;
-      }
-
-      /* Courses css  */
-
-      .glass {
-  backdrop-filter: blur(10px) saturate(1.05);
-  background: linear-gradient(120deg, #f3f4faee 75%, #e9e9f7bb);
-  border-radius: 1.2rem;
-  border: 1px solid #e5ebfa;
-}
-.btn-primary {
-  background-image: linear-gradient(90deg, #4f46e5 0, #2563eb 100%);
-  color: white;
-  padding: 0.65rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 700;
-  box-shadow: 0 8px 30px #4f46e511;
-  transition: box-shadow 0.17s, background 0.17s;
-  font-size: 1.08rem;
-  margin-top: 0.8rem;
-  display: inline-block;
-  text-align: center;
-}
-.btn-primary:hover {
-  box-shadow: 0 24px 60px #2563eb2c;
-  background-image: linear-gradient(90deg, #2563eb 0, #4f46e5 100%);
-  color: #e0e9ff;
-  transform: translateY(-2px) scale(1.03);
-}
-.like-btn {
-  border: 0;
-  background: #fff;
-  color: #eab308;
-  border-radius: 9999px;
-  box-shadow: 0 1.5px 8px #fbbf24;
-  font-size: 1.3rem;
-  padding: 4px 12px;
-  cursor: pointer;
-  margin-left: 12px;
-  transition: background 0.12s;
-  vertical-align: middle;
-}
-.like-btn.active, .like-btn:active, .like-btn.liked {
-  color: orange;
-  background: #fffbe5;
-}
-#modal-bg {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0; width: 100vw; height: 100vh;
-  background: rgba(53,57,82,0.24);
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(5px);
-}
-#modal-bg.active {
-  display: flex;
-  animation: fadeIn .3s;
-}
-#course-modal {
-  min-width: 325px;
-  max-width: 410px;
-  background: #fff;
-  border-radius: 1.3rem;
-  box-shadow: 0 16px 44px #4f46e540;
-  padding: 2.3rem 2rem;
-  position: relative;
-  opacity: 0;
-  transform: translateY(40px) scale(0.94);
-  animation: showCard .35s forwards;
-}
-@keyframes fadeIn {
-  from { opacity:0; }
-  to { opacity:1; }
-}
-@keyframes showCard {
-  60% { opacity:1; transform:translateY(-8px) scale(1.01);}
-  100% { opacity:1; transform: translateY(0) scale(1);}
-}
-#course-modal .btn-close {
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  color: #475569;
-  position: absolute;
-  top: 12px; right: 24px;
-  cursor: pointer;
-  transition: color 0.17s;
-  font-weight: bold;
-}
-#course-modal .btn-close:hover {
-  color: #ef4444;
-}
-.fade-in {
-  animation: fadeIn .4s;
-}
-/* Animate filters buttons */
-.filter-btn {
-  transition: background 0.17s, color 0.17s, box-shadow 0.17s;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.42rem 1.12rem;
-  border-radius: 9999px;
-  background: #e0eaff;
-  margin: 3px 7px 7px 0;
-  color: #494ba0;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 2px 12px #4f46e515;
-}
-.filter-btn.active {
-  background: linear-gradient(90deg, #2563EB 0%, #4F46E5 90%);
-  color: #fff;
-  box-shadow: 0 7px 25px #2563eb26;
-}
-
-    </style>
-  </head>
-
-  <body>
-    <!-- Navbar -->
+<body>
+     <!-- Navbar -->
     <nav id="navbar" class="navbar">
       <a
         class="navbar-logo"
         aria-label="Akshara & OverTech Computer Institute Logo"
       >
-        <img src="../../../assets/images/logo.png" alt="Akshara Logo" />
+        <img src="../assets/images/logo.png" alt="Akshara Logo" />
         <span>Akshara <span class="secondary">& OverTech Computer</span></span>
       </a>
 
@@ -505,31 +313,32 @@
       </aside>
     </div>
 
-    <!-- COURSES -->
-<section id="courses" class="max-w-7xl mx-auto px-4 md:px-14 py-20 bg-white/80 rounded-2xl shadow-xl mt-12 fade-in">
-  <div class="text-center mb-14" data-aos="fade-up">
-    <h2 class="text-4xl font-extrabold text-indigo-900">Popular Courses</h2>
-    <p class="text-slate-600 mt-2 md:max-w-2xl mx-auto">
-      Career-ready short courses designed for quick job outcomes. Filter by level and like your favorites!
-    </p>
-    <div class="flex flex-wrap justify-center mt-7 mb-2">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="Foundation">Foundation</button>
-      <button class="filter-btn" data-filter="Intermediate">Intermediate</button>
+  <!-- Courses Section -->
+  <section id="courses" class="max-w-7xl mx-auto px-4 md:px-14 py-20 bg-white/80 rounded-2xl shadow-xl mt-12 fade-in">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold text-indigo-900">Popular Courses</h2>
+      <p class="text-slate-600 mt-2 md:max-w-2xl mx-auto">
+        Career-ready short courses designed for quick job outcomes. Filter by level and like your favorites!
+      </p>
+      <div class="flex flex-wrap justify-center mt-7 mb-2">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Foundation">Foundation</button>
+        <button class="filter-btn" data-filter="Intermediate">Intermediate</button>
+      </div>
+    </div>
+
+    <div id="course-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 transition-all">
+      <!-- Courses dynamically inserted by JS -->
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal-bg" aria-modal="true" role="dialog" tabindex="-1" aria-hidden="true">
+    <div id="course-modal">
+      <button class="btn-close" id="modal-close" aria-label="Close">&times;</button>
+      <div id="modal-content"></div>
     </div>
   </div>
-
-  <div id="course-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 transition-all">
-    <!-- Courses dynamically inserted by JS -->
-  </div>
-</section>
-
-<div id="modal-bg">
-  <div id="course-modal">
-    <button class="btn-close" id="modal-close">&times;</button>
-    <div id="modal-content"></div>
-  </div>
-</div>
 
     <!-- FOOTER -->
     <footer
@@ -569,7 +378,9 @@
           <nav
             class="flex flex-wrap gap-8 justify-between md:justify-end text-indigo-700 font-semibold text-sm max-w-md md:max-w-none"
           >
-            <a href="about.html" class="hover:text-indigo-900 transition">About</a>
+            <a href="about.html" class="hover:text-indigo-900 transition"
+              >About</a
+            >
             <a href="courses.html" class="hover:text-indigo-900 transition"
               >Courses</a
             >
@@ -651,18 +462,20 @@
         "
       >
         <img
-          src="../../assets/images/icons/facebook-circle-fill.svg"
+          src="../assets/images/icons/facebook-circle-fill.svg"
           alt="Facebook Icon"
           class="w-6 h-6"
         />
       </a>
     </div>
 
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      AOS.init({ duration: 800, once: true, easing: "ease-out-cubic" });
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const navbar = document.getElementById("navbar");
-        const mobileToggle = document.getElementById("mobile-toggle");
+              const mobileToggle = document.getElementById("mobile-toggle");
         const mobilePanel = document.getElementById("mobile-panel");
         const mobileClose = document.getElementById("mobile-close");
         const mobileLangToggle = document.getElementById("mobile-lang-toggle");
@@ -742,160 +555,111 @@
         mobileLangToggle &&
           mobileLangToggle.addEventListener("click", langToggleHandler);
 
-        // --- COURSE DATA ---
-const courses = [
-  {
-    title: "AutoCAD",
-    image: "../../assets/images/icons/KLiC-Advanced-Excel-2023.jpg",
-    level: "Intermediate",
-    hours: "120 hours",
-    desc: "For learners with Architectural or Engineering backgrounds needing AutoCAD skills.",
-    details: "<strong>Modules:</strong> Drafting, Layer Management, Plotting<br><strong>Projects:</strong> 4 real-world drawings<br><strong>Outcome:</strong> Career in Design/Architecture."
-  },
-  {
-    title: "BFSI",
-    image: "../../assets/images/icons/KLiC-AI-ML-2024.jpg",
-    level: "Intermediate",
-    hours: "120 hours",
-    desc: "Covers Indian banking basics: 12 public sector banks, industry tools & financial skills.",
-    details: "<strong>Topics:</strong> Banking basics, Finance tools, Insurance<br><strong>Outcome:</strong> Finance & banking sector jobs."
-  },
-  {
-    title: "C Programming",
-    image: "../../assets/images/icons/KLiC-C-Programming-2023.jpg",
-    level: "Foundation",
-    hours: "120 hours",
-    desc: "User-friendly, in-demand programming language for tech jobs, software basics.",
-    details: "<strong>Modules:</strong> Variables, Loops, Functions<br><strong>Project:</strong> Basic calculator<br><strong>Outcome:</strong> Junior Developer roles."
-  },
-  {
-    title: "C++ Programming",
-    image: "../../assets/images/icons/KLiC-Content-Illustration-2023.jpg",
-    level: "Foundation",
-    hours: "120 hours",
-    desc: "General-purpose, object-oriented language for complex apps and foundational CS.",
-    details: "<strong>Modules:</strong> OOP, Classes, Templates<br><strong>Outcome:</strong> App developer, internships."
-  },
-  {
-    title: "C & C++ Programming",
-    image: "../../assets/images/icons/KLiC-Cyber-Security-2023.jpg",
-    level: "Foundation",
-    hours: "120 hours",
-    desc: "Combined C/C++ language skills for advanced structure & efficient code.",
-    details: "<strong>Syllabus:</strong> Syntax, Memory Management, OOP<br><strong>Jobs:</strong> Developer, tech support."
-  },
-  {
-    title: "Content Illustration",
-    image: "../../assets/images/icons/KLiC-DTP-Adobe-2023.jpg",
-    level: "Intermediate",
-    hours: "120 hours",
-    desc: "Industry-leading content creation/design curriculum for creative job roles.",
-    details: "<strong>Modules:</strong> Design tools, Branding, Portfolio<br><strong>Outcome:</strong> Graphic Designer, Content Creator."
-  }
-];
+       // --- COURSE DATA ---
 
-// --- DOM Elements ---
-const grid = document.getElementById("course-grid");
-const filterBtns = document.querySelectorAll(".filter-btn");
-const modalBg = document.getElementById("modal-bg");
-const modalContent = document.getElementById("modal-content");
-const modalClose = document.getElementById("modal-close");
+      const courses = [
+        {title: "AutoCAD", image: "../assets/images/icons/KLiC-Advanced-Excel-2023.jpg", level: "Intermediate", hours: "120 hours", desc: "For learners with Architectural or Engineering backgrounds needing AutoCAD skills.", details: "<strong>Modules:</strong> Drafting, Layer Management, Plotting<br><strong>Projects:</strong> 4 real-world drawings<br><strong>Outcome:</strong> Career in Design/Architecture."},
+        {title: "BFSI", image: "../assets/images/icons/KLiC-AI-ML-2024.jpg", level: "Intermediate", hours: "120 hours", desc: "Covers Indian banking basics: 12 public sector banks, industry tools & financial skills.", details: "<strong>Topics:</strong> Banking basics, Finance tools, Insurance<br><strong>Outcome:</strong> Finance & banking sector jobs."},
+        {title: "C Programming", image: "../assets/images/icons/KLiC-C-Programming-2023.jpg", level: "Foundation", hours: "120 hours", desc: "User-friendly, in-demand programming language for tech jobs, software basics.", details: "<strong>Modules:</strong> Variables, Loops, Functions<br><strong>Project:</strong> Basic calculator<br><strong>Outcome:</strong> Junior Developer roles."},
+        {title: "C++ Programming", image: "../assets/images/icons/KLiC-Content-Illustration-2023.jpg", level: "Foundation", hours: "120 hours", desc: "General-purpose, object-oriented language for complex apps and foundational CS.", details: "<strong>Modules:</strong> OOP, Classes, Templates<br><strong>Outcome:</strong> App developer, internships."},
+        {title: "C & C++ Programming", image: "../assets/images/icons/KLiC-Cyber-Security-2023.jpg", level: "Foundation", hours: "120 hours", desc: "Combined C/C++ language skills for advanced structure & efficient code.", details: "<strong>Syllabus:</strong> Syntax, Memory Management, OOP<br><strong>Jobs:</strong> Developer, tech support."},
+        {title: "Content Illustration", image: "../assets/images/icons/KLiC-DTP-Adobe-2023.jpg", level: "Intermediate", hours: "120 hours", desc: "Industry-leading content creation/design curriculum for creative job roles.", details: "<strong>Modules:</strong> Design tools, Branding, Portfolio<br><strong>Outcome:</strong> Graphic Designer, Content Creator."}
+      ];
 
-// --- Render Courses ---
-function renderCourses(level) {
-  grid.innerHTML = "";
-  let delay = 0;
-  courses.forEach(course => {
-    if (level !== "all" && course.level !== level) return;
-    const card = document.createElement('div');
-    card.className = "glass flex flex-col h-full rounded-2xl shadow transition hover:scale-[1.035] cursor-pointer overflow-hidden relative group";
-    card.setAttribute('data-aos', 'fade-up');
-    card.setAttribute('data-aos-delay', `${delay}`);
-    delay += 60;
-    card.innerHTML = `
-      <div class="flex justify-end px-4 pt-3">
-        <button class="like-btn" title="Like this course">☆</button>
-      </div>
-      <img src="${course.image}" alt="${course.title}" class="h-44 w-full object-cover rounded-t-2xl transition-transform group-hover:scale-105" />
-      <div class="flex-1 flex flex-col p-6">
-        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-700 transition">${course.title}</h3>
-        <div class="flex gap-2 mb-2 flex-wrap">
-          <span class="bg-blue-100 text-blue-700 font-medium text-xs px-3 py-1 rounded-full">${course.level}</span>
-          <span class="bg-green-100 text-green-700 font-medium text-xs px-3 py-1 rounded-full inline-flex items-center">
-            <svg class="w-4 h-4 mr-1" fill="none" stroke="#22c55e" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3" /></svg>
-            ${course.hours}
-          </span>
-        </div>
-        <p class="text-slate-600 mb-5 text-sm">${course.desc}</p>
-        <button class="btn-primary w-full text-center py-2 mt-auto rounded-full font-bold transition view-detail">View Details</button>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-  AOS.refresh();
-}
+      const grid = document.getElementById("course-grid");
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const modalBg = document.getElementById("modal-bg");
+      const modalContent = document.getElementById("modal-content");
+      const modalClose = document.getElementById("modal-close");
 
-renderCourses("all");
+      function renderCourses(level) {
+        grid.innerHTML = "";
+        let delay = 0;
+        courses.forEach(course => {
+          if (level !== "all" && course.level !== level) return;
+          const card = document.createElement("div");
+          card.className = "glass flex flex-col h-full rounded-2xl shadow transition hover:scale-[1.035] cursor-pointer overflow-hidden relative group";
+          card.setAttribute("data-aos", "fade-up");
+          card.setAttribute("data-aos-delay", delay);
+          delay += 60;
+          card.innerHTML = `
+            <div class="flex justify-end px-4 pt-3">
+              <button class="like-btn" title="Like this course">☆</button>
+            </div>
+            <img src="${course.image}" alt="${course.title}" class="h-44 w-full object-cover rounded-t-2xl transition-transform group-hover:scale-105" />
+            <div class="flex-1 flex flex-col p-6">
+              <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-700 transition">${course.title}</h3>
+              <div class="flex gap-2 mb-2 flex-wrap">
+                <span class="bg-blue-100 text-blue-700 font-medium text-xs px-3 py-1 rounded-full">${course.level}</span>
+                <span class="bg-green-100 text-green-700 font-medium text-xs px-3 py-1 rounded-full inline-flex items-center">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="#22c55e" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3" /></svg>
+                  ${course.hours}
+                </span>
+              </div>
+              <p class="text-slate-600 mb-5 text-sm">${course.desc}</p>
+              <button class="btn-primary w-full text-center py-2 mt-auto rounded-full font-bold transition view-detail">View Details</button>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+        AOS.refresh();
+      }
 
-// --- Filter Functionality ---
-filterBtns.forEach(btn => {
-  btn.onclick = function() {
-    filterBtns.forEach(b => b.classList.remove("active"));
-    this.classList.add("active");
-    renderCourses(this.getAttribute("data-filter"));
-  };
-});
+      renderCourses("all");
 
-// --- Like/Favorite Feature ---
-grid.addEventListener("click", function(e) {
-  if (e.target.classList.contains("like-btn")) {
-    e.target.classList.toggle("liked");
-    e.target.innerHTML = e.target.classList.contains("liked") ? "★" : "☆";
-  }
-  if (e.target.classList.contains("view-detail")) {
-    const card = e.target.closest(".glass");
-    const title = card.querySelector("h3").textContent;
-    showModal(title);
-  }
-});
-
-// --- Modal Logic ---
-function showModal(title) {
-  const course = courses.find(c => c.title === title);
-  if (!course) return;
-  modalContent.innerHTML = `
-    <img src="${course.image}" alt="${course.title}" class="w-full h-36 object-cover rounded-xl mb-4 shadow" />
-    <h3 class="text-2xl font-extrabold text-indigo-900 mb-2">${course.title}</h3>
-    <div class="flex gap-2 mb-3">
-      <span class="bg-blue-100 text-blue-700 font-medium text-xs px-3 py-1 rounded-full">${course.level}</span>
-      <span class="bg-green-100 text-green-700 font-medium text-xs px-3 py-1 rounded-full inline-flex items-center">
-        <svg class="w-4 h-4 mr-1" fill="none" stroke="#22c55e" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3" /></svg>${course.hours}
-      </span>
-    </div>
-    <p class="mb-3 text-slate-700">${course.desc}</p>
-    <div class="bg-slate-50 border rounded-md p-3 text-slate-600 mb-4">${course.details}</div>
-    <a href="./contact.html" class="btn-primary w-full">Book a Demo</a>
-  `;
-  modalBg.classList.add('active');
-  document.body.style.overflow='hidden';
-}
-modalClose.onclick = function() {
-  modalBg.classList.remove('active');
-  document.body.style.overflow='';
-};
-modalBg.onclick = function(e) {
-  if (e.target === modalBg) {
-    modalBg.classList.remove('active');
-    document.body.style.overflow='';
-  }
-};
-
-// --- Animate on Scroll ---
-AOS.init({ duration: 800, once: true, easing: "ease-out-cubic" });
-
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderCourses(btn.getAttribute("data-filter"));
+        });
       });
-    </script>
-    <!-- AOS Animation JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  </body>
+
+      grid.addEventListener("click", e => {
+        if (e.target.classList.contains("like-btn")) {
+          e.target.classList.toggle("liked");
+          e.target.innerHTML = e.target.classList.contains("liked") ? "★" : "☆";
+        }
+        if (e.target.classList.contains("view-detail")) {
+          const card = e.target.closest(".glass");
+          const title = card.querySelector("h3").textContent;
+          showModal(title);
+        }
+      });
+
+      function showModal(title) {
+        const course = courses.find(c => c.title === title);
+        if (!course) return;
+        modalContent.innerHTML = `
+          <img src="${course.image}" alt="${course.title}" class="w-full h-36 object-cover rounded-xl mb-4 shadow" />
+          <h3 class="text-2xl font-extrabold text-indigo-900 mb-2">${course.title}</h3>
+          <div class="flex gap-2 mb-3">
+            <span class="bg-blue-100 text-blue-700 font-medium text-xs px-3 py-1 rounded-full">${course.level}</span>
+            <span class="bg-green-100 text-green-700 font-medium text-xs px-3 py-1 rounded-full inline-flex items-center">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="#22c55e" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3" /></svg>${course.hours}
+            </span>
+          </div>
+          <p class="mb-3 text-slate-700">${course.desc}</p>
+          <div class="bg-slate-50 border rounded-md p-3 text-slate-600 mb-4">${course.details}</div>
+          <a href="./contact.html" class="btn-primary w-full">Book a Demo</a>
+        `;
+        modalBg.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      modalClose.addEventListener("click", () => {
+        modalBg.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      modalBg.addEventListener("click", e => {
+        if (e.target === modalBg) {
+          modalBg.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+</body>
 </html>

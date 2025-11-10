@@ -10,15 +10,9 @@
     <title>Akshara & OverTech Computer Institute</title>
     <link rel="icon" href="assets/images/logo.png" />
     <!-- AOS Animation CSS -->
-    <link
-      href="../assets/css/aos.css"
-      rel="stylesheet"
-    />
+    <link href="../assets/css/aos.css" rel="stylesheet" />
     <!-- Tailwind CSS -->
-    <link
-      href="../assets/css/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <link href="../assets/css/tailwind.min.css" rel="stylesheet" />
 
     <style>
       /* Reset and base */
@@ -179,26 +173,23 @@
       /* Responsive */
 
       @media (max-width: 1200px) {
-        
-        
         nav.navbar {
-        padding: 1rem 1.5rem;
-      }
+          padding: 1rem 1.5rem;
+        }
 
-      .navbar-logo span{
+        .navbar-logo span {
           font-size: 1.5rem;
         }
-        
       }
-      
+
       @media (max-width: 767px) {
         ul.nav-links {
           display: none;
         }
 
         nav.navbar {
-        padding: 1rem 1.5rem;
-      }
+          padding: 1rem 1.5rem;
+        }
 
         a.login-btn {
           display: none;
@@ -315,6 +306,73 @@
         background-color: #3b82f6;
         color: white;
       }
+
+      .btn-primary {
+        background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+        color: #fff;
+        font-weight: 700;
+        font-family: inherit;
+        font-size: 1.07rem;
+        padding: 0.85em 2em;
+        border: none;
+        border-radius: 9999px;
+        box-shadow: 0 4px 18px rgba(37, 99, 235, 0.15),
+          0 1.5px 6px rgba(0, 0, 0, 0.07);
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.23s cubic-bezier(0.4, 0, 0.2, 1),
+          box-shadow 0.23s cubic-bezier(0.4, 0, 0.2, 1), transform 0.17s;
+        outline: none;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary:hover,
+      .btn-primary:focus-visible {
+        background: linear-gradient(92deg, #1e40af 0%, #2563eb 100%);
+        box-shadow: 0 8px 28px rgba(37, 99, 235, 0.22),
+          0 2.5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px) scale(1.045);
+        color: #fff;
+      }
+
+      .btn-primary:active {
+        background: #2563eb;
+        box-shadow: 0 1px 4px rgba(37, 99, 235, 0.15);
+        transform: scale(0.99);
+      }
+
+      .btn-primary:focus-visible {
+        box-shadow: 0 0 0 3px #93c5fd, 0 8px 28px rgba(37, 99, 235, 0.19);
+      }
+
+      @keyframes fadein {
+        from {
+          opacity: 0;
+          transform: scale(0.96) translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      @keyframes fadeout {
+        from {
+          opacity: 1;
+          transform: scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: scale(0.97) translateY(-10px);
+        }
+      }
+      .animate-fadein {
+        animation: fadein 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .animate-fadeout {
+        animation: fadeout 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
     </style>
   </head>
 
@@ -334,7 +392,7 @@
         <li><a href="../index.html">Home</a></li>
         <li><a href="./courses.html">Courses</a></li>
         <li><a href="./about.html">About</a></li>
-        <li><a href="./contact.html"  class="text-primary">Contact</a></li>
+        <li><a href="./contact.html" class="text-primary">Contact</a></li>
         <li>
           <button
             id="lang-toggle"
@@ -391,19 +449,138 @@
       </aside>
     </div>
 
-    <h1
-      style="
-        background-color: red;
-        font-size: 5vw;
-        color: white;
-        text-align: center;
-        display: flex;
-        align-items: center !important;
-        justify-content: center;
-      "
+    <!-- CONTACT -->
+    <section
+      id="contact"
+      class="max-w-xl mx-auto px-6 md:px-12 py-20"
+      style="margin-top: 4rem"
     >
-      Contact
-    </h1>
+      <h2
+        class="text-4xl font-extrabold mb-12 text-center text-indigo-900"
+        data-aos="fade-down"
+      >
+        Request a Call
+      </h2>
+      <form
+        id="contact-form"
+        class="glass p-6 bg-white/60 rounded-2xl shadow-md"
+        autocomplete="off"
+        data-aos="fade-up"
+        data-aos-delay="80"
+      >
+        <label class="sr-only" for="name">Your name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Your name"
+          required
+          minlength="3"
+          class="w-full rounded-md px-4 py-3 border border-gray-200 focus:ring-2 focus:ring-indigo-300"
+        />
+
+        <label class="sr-only" for="phone">Phone number</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          placeholder="Phone Number"
+          required
+          pattern="[\d\s\-\+]+"
+          class="w-full rounded-md px-4 py-3 border border-gray-200 mt-4 focus:ring-2 focus:ring-indigo-300"
+        />
+
+        <label class="sr-only" for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          placeholder="Message"
+          required
+          class="w-full rounded-md px-4 py-3 border border-gray-200 mt-4 focus:ring-2 focus:ring-indigo-300 resize-none"
+        ></textarea>
+
+        <button type="submit" class="btn-primary w-full mt-4">
+          Send Request
+        </button>
+        <p
+          id="contact-result"
+          class="text-center text-green-600 font-semibold mt-3"
+        ></p>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      class="mt-16 border-t border-slate-100 py-12 bg-indigo-50 text-slate-700"
+    >
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div
+          class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-0"
+        >
+          <div class="space-y-2">
+            <div class="font-semibold text-indigo-900 text-lg">
+              Akshara & OverTech Computer Institute
+            </div>
+            <address class="not-italic text-slate-600 text-sm leading-relaxed">
+              Main Road Amthana, Tq. Sillod, Dist. Chh. Sambhaji Nagar,
+              Maharashtra - 431113
+            </address>
+            <div class="text-sm space-y-1">
+              <a
+                href="mailto:aksharacomputersofficial@gmail.com"
+                class="block hover:text-indigo-700 underline transition"
+                >aksharacomputersofficial@gmail.com</a
+              >
+              <a
+                href="tel:+919860540258"
+                class="block hover:text-indigo-700 underline transition"
+                >+91 9860540258</a
+              >
+              <a
+                href="tel:+919657459908"
+                class="block hover:text-indigo-700 underline transition"
+                >+91 9657459908</a
+              >
+            </div>
+          </div>
+
+          <nav
+            class="flex flex-wrap gap-8 justify-between md:justify-end text-indigo-700 font-semibold text-sm max-w-md md:max-w-none"
+          >
+            <a href="about.html" class="hover:text-indigo-900 transition"
+              >About</a
+            >
+            <a href="courses.html" class="hover:text-indigo-900 transition"
+              >Courses</a
+            >
+            <a href="contact.html" class="hover:text-indigo-900 transition"
+              >Contact</a
+            >
+            <a
+              href="https://goo.gl/maps/yourlink"
+              target="_blank"
+              class="hover:text-indigo-900 transition"
+              >Location Map</a
+            >
+            <a
+              href="privacy-policy.html"
+              class="hover:text-indigo-900 transition"
+              >Privacy Policy</a
+            >
+            <a
+              href="terms-of-service.html"
+              class="hover:text-indigo-900 transition"
+              >Terms of Service</a
+            >
+          </nav>
+        </div>
+
+        <p class="mt-8 text-center text-slate-500 text-xs">
+          © 2025 Akshara & OverTech Computer Institute. All rights reserved.
+        </p>
+      </div>
+    </footer>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -470,18 +647,18 @@
         });
 
         // Placeholder for language toggle
-          function langToggleHandler() {
-            [desktopLangToggle, mobileLangToggle].forEach(function (btn) {
-              if (!btn) return;
-              if (btn.textContent.trim() === "मराठी") {
-                btn.textContent = "English";
-                btn.setAttribute("data-lang", "mr");
-              } else {
-                btn.textContent = "मराठी";
-                btn.setAttribute("data-lang", "en");
-              }
-            });
-          }
+        function langToggleHandler() {
+          [desktopLangToggle, mobileLangToggle].forEach(function (btn) {
+            if (!btn) return;
+            if (btn.textContent.trim() === "मराठी") {
+              btn.textContent = "English";
+              btn.setAttribute("data-lang", "mr");
+            } else {
+              btn.textContent = "मराठी";
+              btn.setAttribute("data-lang", "en");
+            }
+          });
+        }
 
         desktopLangToggle &&
           desktopLangToggle.addEventListener("click", langToggleHandler);
@@ -491,6 +668,49 @@
         // Initialize AOS animations if available
         if (window.AOS) {
           AOS.init({ duration: 900, once: true, easing: "ease-out-cubic" });
+        }
+
+        // Contact Form Success Animation
+        const contactForm = document.getElementById("contact-form");
+        const resultBox = document.getElementById("contact-result");
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            // You can add form validation here if needed. If you use backend, call AJAX/Fetch instead.
+
+            // Show animated success message
+            resultBox.textContent = "Request message sent!";
+            resultBox.classList.remove("opacity-0", "animate-fadeout");
+            resultBox.classList.add(
+              "animate-fadein",
+              "bg-green-100",
+              "text-green-700",
+              "py-2",
+              "rounded",
+              "shadow",
+              "border",
+              "border-green-200"
+            );
+            setTimeout(() => {
+              resultBox.classList.remove("animate-fadein");
+              resultBox.classList.add("animate-fadeout");
+            }, 2400);
+            setTimeout(() => {
+              resultBox.textContent = "";
+              resultBox.classList.remove(
+                "bg-green-100",
+                "text-green-700",
+                "py-2",
+                "rounded",
+                "shadow",
+                "border",
+                "border-green-200",
+                "animate-fadeout"
+              );
+            }, 3200);
+
+            contactForm.reset(); // Optional: reset form fields
+          });
         }
       });
     </script>
