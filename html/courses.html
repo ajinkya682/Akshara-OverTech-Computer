@@ -171,6 +171,20 @@
       }
 
       /* Responsive */
+
+      @media (max-width: 1200px) {
+        
+        
+        nav.navbar {
+        padding: 1rem 1.5rem;
+      }
+
+      .navbar-logo span{
+          font-size: 1.5rem;
+        }
+        
+      }
+      
       @media (max-width: 767px) {
         ul.nav-links {
           display: none;
@@ -178,6 +192,10 @@
 
         nav.navbar {
           padding: 1rem 1.5rem;
+        }
+
+        .navbar-logo span{
+          font-size: 1.5rem;
         }
 
         a.login-btn {
@@ -551,11 +569,11 @@
           <nav
             class="flex flex-wrap gap-8 justify-between md:justify-end text-indigo-700 font-semibold text-sm max-w-md md:max-w-none"
           >
-            <a href="#about" class="hover:text-indigo-900 transition">About</a>
-            <a href="#courses" class="hover:text-indigo-900 transition"
+            <a href="about.html" class="hover:text-indigo-900 transition">About</a>
+            <a href="courses.html" class="hover:text-indigo-900 transition"
               >Courses</a
             >
-            <a href="./html/contact.html" class="hover:text-indigo-900 transition"
+            <a href="contact.html" class="hover:text-indigo-900 transition"
               >Contact</a
             >
             <a
